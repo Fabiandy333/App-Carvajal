@@ -1,0 +1,8 @@
+server.js
+
+puppeteer -> controlar el navegador
+randomUseragent -> generación aleatoria de una cadena de agente de usuario real WebScraping
+multer -> cargar archivos
+express -> Ayudantes HTTP (redireccionamiento, almacenamiento en caché, etc.)
+mime-types -> Determinar tipo de archivo
+cors ->

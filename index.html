@@ -96,6 +96,8 @@
     <main>
         <h2>Configuracion Impresora</h2>
 
+        <!-- EMPIEZA EL FORMULARIO -->
+
         <form class="formulario">
 
             <div class="contenedor-campos">            
@@ -104,12 +106,20 @@
                 <legend>Información Requerida Para configuración</legend>
 
                 <div class="campo">
-                    <label>Ip Impresora</label>
+                    <label>*Ip Impresora </label>
                     <input class="input-text" type="text" placeholder="Ip">
                 </div>
                 <div class="campo">
-                    <label>Modelo Impresora</label>
-                    <input class="input-text" type="text" placeholder="Modelo">
+                    <label>*Modelo Impresora </label>
+                    <select class="input-text">
+                        <option value="MFP E62555">MFP E62555</option>
+                        <option value="MFP E62655">MFP E62655</option>
+                        <option value="Laser E60155">Laser E60155</option>
+                        <option value="Color MFP E67550">Color MFP E67550</option>
+                        <option value="Color MFP E67650">Color MFP E67650</option>
+                    </select>
+                    <!-- <input class="input-text" type="text" placeholder="Modelo"> -->
+                
                 </div>
                 
             </fieldset>
@@ -119,7 +129,14 @@
 
                 <div class="campo">
                 <label>Densidad Impresora</label>
-                <input class="input-text" type="number" placeholder="Densidad">
+                <select class="input-text">
+                    <option value="0">0</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
+                </select>
+                <!-- <input class="input-text" type="number" placeholder="Densidad"> -->
                 <span>%</span>
                 <input class="boton" type="submit" value="Aplicar">
                 </div>
@@ -135,7 +152,7 @@
                 </div>
                 <div class="campo">
                     <label>Ubicación Impresora</label>
-                    <input class="input-text" type="text" placeholder="Ubicación">
+                    <input class="input-text" type="text" placeholder="Ubicación - Área">
                     <input class="boton" type="submit" value="Aplicar">
                 </div> 
             

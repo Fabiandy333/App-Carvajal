@@ -6,8 +6,6 @@
 
     <title>Seguimiento Papel</title>
 
-    <script src="server.js"> </script>
-
     <link rel="preload" href="css/normalize.css" as="styles">
     <link href="css/normalize.css" rel="stylesheet">
 
@@ -17,8 +15,6 @@
 
     <link rel="preload" href="css/styles.css" as="styles">
     <link href="css/styles.css" rel="stylesheet">
-
-    
 </head>
 
 
@@ -96,48 +92,183 @@
         </nav>
 
     </div>
+    
     <main>
         <h2>Seguimiento de Remesas Papeleria Sedes TQ</h2>
 
         <input type="file" id="fileInput">
-        <button class="boton" onclick="processRemesas()">Procesar Remesas</button>
-    
-        <table id="resultTable">
-            <tr>
-                <th>Número de Remesa</th>
-                <!-- Agrega más encabezados según tus datos extraídos -->
-            </tr>
-        </table>
+        <button class="boton" onclick="sendFile()">Cargar Archivo</button>
 
-        <!-- Aqui Codigo JS -->
-        <script>                                                
-            async function processRemesas() {
-                const fileInput = document.getElementById("fileInput");
-                const filePath = fileInput.files[0].path;
-                const response = await fetch("/process-remesas", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
+        <div class="table-wrapper">
+            <table class="resultTable">
+                <thead>
+                    <tr>
+                        <th>Número de guia</th>
+                        <th>Ciudad</th>
+                        <th>Dirección</th>
+                        <th>Estado</th>
+                        <th>N Cajas</th>
+                        <th>Fecha aprox entrega</th>
+                        <th>Fecha entrega</th>
+                        <th>Hora</th>
+                        <th>Causa</th>
+                        <th>Novedades</th>
+                        <!-- Agrega más encabezados según tus datos extraídos -->
+                    </tr>
+                </thead>
+                <tbody> <!-- aqui va la los datos a la tabla-->   </tbody>
+            </table>
+
+        </div>
+        
+
+        <template id="template">
+            <tr>                
+                <td class="numeroGuia"></td>
+                <td class="ciudad"></td>
+                <td class="direccion"></td>
+                <td class="estado"></td>
+                <td class="nCajas"></td>
+                <td class="fechaAentrega"></td>
+                <td class="fechaEntrega"></td>
+                <td class="hora"></td>
+                <td class="causa"></td>
+                <td class="novedades"></td>
+            </tr>
+        </template>
+        <script>
+            const d =document, //Variable "d" para simplificar escritura el DOM
+            $table = d.querySelector(".resultTable"), // Variable "table" para vaciar a la tabla
+            $template = d.getElementById("template").content, // Variable "template" estructura para vaciar dinamicamente la estructura
+            $fragment = d.createDocumentFragment(); //guardar en un fragmento y luego insertarla al DOM
+
+
+            // AJAX CREAR FUNCION
+            // 1- crear la instacia del objeto 2- lisener 3- abrir la peticion 4-enviar la petición
+            const ajax = (options)=>{ //función ajax para que sea mas dinamico
+                let {url,method,success,error,data} = options; //estructura que debe tener el options
+                // url = string, method = string, success = funcion, error = funcion, data = objeto
+                const xhr = new XMLHttpRequest(); //Objeto httprequest
+
+                xhr.addEventListener("readystatechange", e => {  //listener cuando detecte un cambio
+                    if(xhr.readyState !== 4)return;
+
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        let json = JSON.parse(xhr.responseText); // comvertir a formato js a JSON
+                        success(json); // pasamos a la funcion succes la variable o formato comvertido  
+                    } else{
+                        let message = xhr.statusText || "Ocurrio un error";
+                        error(`Error ${xhr.status}:${message}`);
+                    }
+                });  
+                xhr.open(method || "GET",url);
+                xhr.setRequestHeader("Content-type","application/json; charset=utf-8"); //enviar al servidor en el post indicando que se envia la info en formato Json de lo contrario seria texto plano
+                xhr.send(JSON.stringify(data)) //comvertir el objeto js data a cadena de texto 
+            }
+
+            // Funcion getAllRemesas Tarer todas las remesas mediante la funcion AJAX creada le pasamos los parametros
+            const getAllRemesas = () =>{
+                ajax({
+                    // method: "GET", omiti esta por defecto para GET
+                    url: "http://192.168.8.22:3000/remesa-data",
+                    //Funcion en caso de exito en HTML 
+                    success: (res)=>{console.log(res);
+                        res.forEach(element => { //iterar por cada template que traiga o elemento
+                            $template.querySelector(".numeroGuia").textContent=element.nRemesa; //dentro de la variable template busca el selector con la class .numeroGuia poner lo que viene en nRemesa
+                            $template.querySelector(".ciudad").textContent=element.getCiudad;
+                            $template.querySelector(".direccion").textContent=element.getDireccion;
+                            $template.querySelector(".estado").textContent=element.getEstado;
+                            $template.querySelector(".nCajas").textContent=element.getCajas;
+                            $template.querySelector(".fechaAentrega").textContent=element.getFechaAproxEntregada;
+                            $template.querySelector(".fechaEntrega").textContent=element.getFechaEntregada;
+                            $template.querySelector(".hora").textContent=element.getHora;
+                            $template.querySelector(".causa").textContent=element.getCausa;
+                            $template.querySelector(".novedades").textContent=element.getNovedad;                            
+                            
+                            //Clonar el template para que quede en memoria
+                            let $clone = d.importNode($template,true);
+                            $fragment.appendChild($clone);    // no afectar el rendimiento del DOM pegar el nodo Clonado al fragmento
+                            //location.reload();
+                        });
+                        $table.querySelector("tbody").appendChild($fragment); // buscar la tabla y los nodos agregarlos al Tbody de la tabla
+                        
                     },
-                    body: JSON.stringify({ filePath })
-                });
-    
-                if (response.ok) {
-                    const data = await fetch("/remesa-data").then(res => res.json());
-                    const table = document.getElementById("resultTable");
-                    table.innerHTML = ""; // Limpiar tabla antes de agregar nuevos datos
-    
-                    data.forEach(item => {
-                        const row = table.insertRow();
-                        row.insertCell().textContent = item.nRemesa;
-                        // Agrega más celdas según tus datos extraídos
-                    });
+
+                    //Funcion en caso de error en HTML
+                    error: (err)=>{console.log(err);                        
+                        $table.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`);} 
+                    // data: null -> omiti data
+                })
+            }            
+            // DOCument
+            d.addEventListener("DOMContentLoaded",getAllRemesas)
+
+            //---------------------------------------------------------------------------------------------------------------
+            // Función para enviar el archivo al servidor
+const sendFile = () => {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0]; // Obtener el archivo seleccionado
+
+    if (!file) {
+        console.error("No se ha seleccionado ningún archivo.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file); // Agregar el archivo al objeto FormData
+
+    // Función AJAX para enviar el archivo al servidor
+    const ajax = (options) => {
+        let {url, method, success, error, data} = options;
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    success(xhr.responseText);
                 } else {
-                    alert("Error al procesar las remesas.");
+                    let message = xhr.statusText || "Ocurrió un error";
+                    error(`Error ${xhr.status}: ${message}`);
                 }
             }
+        });
+
+        xhr.open(method || "POST", url);
+        xhr.send(data); // Enviar los datos (FormData) al servidor
+    };
+
+    // Llamar a la función AJAX para enviar el archivo al servidor
+    ajax({
+        method: "POST",
+        url: "http://192.168.8.22:3000/upload",
+        data: formData,
+        success: (response) => {
+            console.log("Archivo subido exitosamente:", response);
+            //lógica adicional después de subir el archivo
+            alert("Archivo subido exitosamente");
+        },
+        error: (err) => {
+            console.error("Error al subir el archivo:", err);
+            // manejar el error de subida del archivo
+            alert("Error al subir el archivo");
+        }
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </script>
-        
 
     </main>
     
