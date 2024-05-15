@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const randomUseragent = require("random-useragent");
 
 
 
@@ -15,36 +16,54 @@ const configDensidad = async(ip,modelo)=>{
         ignoreHTTPSErrors: true,
     });
     const page = await browser.newPage();
-    console.log("Crea la pagina");
 
         try{
             const header = randomUseragent.getRandom();
             await page.setUserAgent(header);
             await page.setViewport({ width: 1920, height: 1080 });
+            console.log("Crea la ventana");
             await page.goto(
-              ip,
-              { timeout: 3000 }
+                "https://"+ip+"/hp/device/SignIn/Index",
+              { timeout: 10000 }
             );
-
-            console.log("Carga Navegador");
         
             //validar espera
-            await page.waitForSelector("#PasswordTextBox", { timeout: 1000 });
-            console.log("Encuentra el PasswordTextBox");
+
             const ipInput = await page.waitForSelector("#PasswordTextBox", {
                 timeout: 15000,
               });
         
             //click
             let pass = "CarvajalPrint1";
-            await page.click("#EwsLogin");
             await page.click("#PasswordTextBox");
             await ipInput.type(pass.toString());
             await page.click("#signInOk");
             await page.waitForSelector("#menuTabs", { timeout: 1000 });
             await page.click("#PrintPages");
+            await page.waitForSelector("#localMenu", { timeout: 1000 });
             await page.click("#PrintQualityGroup");
+            await page.waitForSelector("#content", { timeout: 1000 });
             //Enviar densidad
+            
+            // Modificar el atributo 'style' del elemento
+            await page.evaluate(() => {
+                const div = document.querySelector('#TonerDensityBlack');
+                console.log("Ingresa page.evaluate");
+                if (div) {
+                  const span = div.querySelector('.ui-slider-handle');
+                  console.log("Ingresa al if div");
+                  if (span) {
+                    span.style.left = '50%'; // Cambiar el porcentaje a 50%
+                    console.log("Ingresa al span hace cambios");
+                  }
+                }
+              });
+
+            // Esperar un momento para ver los cambios 
+            await page.waitForTimeout(2000);
+            await page.click("#FormButtonSubmit");
+
+
 
 
 

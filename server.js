@@ -120,6 +120,11 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
       (objHora) => objHora.innerText,
       objHora
     ); // Extraer el innerText
+    const objObservacion = await page.$("#span_vRMSOBV"); // Objeto Hora
+    const getObservacion = await page.evaluate(
+      (objObservacion) => objObservacion.innerText,
+      objObservacion
+    );
 
     console.log(
       "----->",
@@ -141,7 +146,9 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
       " ",
       getCausa,
       " ",
-      getNovedad
+      getNovedad,
+      " ",
+      getObservacion
     );
 
     const data = {
@@ -155,6 +162,7 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
       getHora,
       getCausa,
       getNovedad,
+      getObservacion
     }; // agregado a un arreglo
     remesaData.push(data); //agregado remesaData
     console.log("La página se cargó correctamente.");
@@ -219,38 +227,6 @@ function busquedaSolis(filePath) {
   });
 }
 
-
-
-//Función Principal
-//Llamar a la función y pasar la ruta del archivo
-// const filePath = "./doc_envios/Envio_Informacion_Transportador_5337166.txt";
-const filePath = "./uploads/file1.txt";
-
-
-//llamado a la función  busquedaSolis(filePath)
-busquedaSolis(filePath)
-  .then(async (result) => {
-    console.log("Números extraídos:", result);
-
-    const browser = await puppeteer.launch({
-      executablePath:
-        "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-      headless: true, //False to hide(Esconder)
-      ignoreHTTPSErrors: true,
-    });
-
-    const page = await browser.newPage(); // Abrir pestaña
-
-    for (let i = 0; i < result.length; i++) {
-      await inputRemesaSolistica(browser, page, result[i]); //función ingresa un navegador una pagina y el array de numero de guias
-    }
-    await browser.close();
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-
 //GUARDAR ARCHIVO RECIBIDO
 // Configuración de Multer para guardar los archivos en el directorio 'uploads'
 const storage = multer.diskStorage({
@@ -269,12 +245,52 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Ruta para la subida de archivos
-// APP POST 
+
+// APP POST  GUARDAR ARCHIVO TXT
 app.post('/upload', upload.single('file'), (req, res) => {
   res.send('Archivo recibido y guardado correctamente.');
 });
 
+// APP POST EJECUTAR BUSQUEDASOLIS
+app.post('/resumen', async (req, res) => {
+  //vaciar el arreglo
+  remesaData = [];
+  try {
+    const filePath = "./uploads/file.txt";
+    //const filePath = req.body.filePath; // Asegúrate de obtener el valor correcto del cuerpo de la solicitud
+
+    //llamado a la función  busquedaSolis(filePath)
+    busquedaSolis(filePath)
+      .then(async (result) => {
+        console.log("Números extraídos:", result);
+
+        const browser = await puppeteer.launch({
+          executablePath:
+            "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+          headless: true, //False to hide(Esconder)
+          ignoreHTTPSErrors: true,
+        });
+
+        const page = await browser.newPage(); // Abrir pestaña
+
+        for (let i = 0; i < result.length; i++) {
+          await inputRemesaSolistica(browser, page, result[i]); //función ingresa un navegador una pagina y el array de numero de guias
+        }
+        await browser.close();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    const result = await busquedaSolis(filePath); // Llama a la función con el filePath
+
+    // respuesta al cliente si es necesario
+    res.status(200).json({ message: 'Búsqueda realizada correctamente Servidor', result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en la búsqueda Servidor' });
+  }
+});
 
 //PUERTO DONDE ESTA CORRIENDO EL SERVIDOR
   app.listen(3000, () => {
@@ -284,30 +300,3 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 
 
-
-
-  /*
-// APP POST 
-// Configuración de multer para guardar los archivos en el directorio 'uploads'
-  const upload = multer({ dest: 'uploads/' });
-
-// Ruta para procesar el archivo recibido del cliente
-  app.post("/process-remesas",  upload.single('file'), async (req, res) => {
-    const filePath = req.body.filePath;
-    try {
-      const result = await busquedaSolis(filePath);
-      remesaData = [];
-      for (let i = 0; i < result.length; i++) {
-        await inputRemesaSolistica(result[i]);
-      }
-// Enviar la respuesta como JSON al cliente
-      res.json({ success: true });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
-  
-
-  */
-
-  

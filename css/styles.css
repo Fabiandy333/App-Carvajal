@@ -53,22 +53,16 @@ h1,h2,h3 {
     margin-left: auto; /* el margen de la barra la toma automaticamente lado isquierdo para centrar*/
 }
 
-/*
-
-.boton {                                    
-    background-color: var(--verdeOscuro);
-    color: var(--blanco);
-    padding: .5rem 1rem;
-    margin-top: 1rem;
-    font-size: 1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: .5rem;
-    text-align: center;
-} 
-
-*/
+    /* Estilos para el input de tipo archivo */
+    input[type="file"] {
+        /* Personaliza aquí tus estilos */
+        border: 1px solid var(--verdeOscuro);
+        padding: 10px;
+        background-color: var(--verdeOscuro);
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    
 .nav-bg {
     background-color: var(--verde); /* Color fondo barra de navegacion*/
 }
@@ -110,7 +104,7 @@ h1,h2,h3 {
   font-family: Inter,sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 3.5;
   margin: 0;
   padding: .5rem 1rem;
   text-align: center;
@@ -385,4 +379,5 @@ nav a:hover {
         display: block;
         text-align: center;
     }
+
 }
