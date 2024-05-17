@@ -1,7 +1,21 @@
+
 const puppeteer = require("puppeteer");
 const randomUseragent = require("random-useragent");
+const express = require('express');
+const app = express();
+const { Socket } = require("dgram");
 
 
+
+// CORS permisos
+const cors = require('cors');
+
+app.use(cors()) //TODO el mundo puede ingresar Permiso
+
+// Middleware para manejar solicitudes JSON
+app.use(express.json());
+
+// FUNCIÓN CONFIG DENSIDAD
 
 const configDensidad = async(ip,modelo,densidad)=>{
 
@@ -83,10 +97,23 @@ function iniciar(ip,modelo,densidad){
     console.log("Ingresa FIN");
 }
 
-iniciar("172.22.255.36","MFP E62555","3")
+// Ruta para recibir la dirección IP
+app.post('/enviar-ip', (req, res) => {
+    const ip = req.body.ip; // Obtiene la dirección IP del cuerpo de la solicitud
+
+    // Ejecuta la función deseada con la dirección IP
+    console.log("la driección ip recibida es: "+ip);
+    iniciar(ip,"MFP E62555","3");
+
+    // Responde con éxito al cliente
+    res.status(200).json({ message: 'Dirección IP recibida exitosamente' });
+});
 
 
-
+// Inicia el servidor en el puerto 3000
+app.listen(3000, () => {
+    console.log('Servidor Express escuchando en el puerto 3000...');
+});
 
 
 

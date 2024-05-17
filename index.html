@@ -107,7 +107,7 @@
 
                 <div class="campo">
                     <label>*Ip Impresora </label>
-                    <input id="input-Ip" type="text" placeholder="Ip">
+                    <input id="input-Ip" type="text" placeholder="Ip"> 
                 </div>
                 <div class="campo">
                     <label>*Modelo Impresora </label>
@@ -220,47 +220,51 @@
     </footer>
 
   </body>
-
 <script>
     // FUNCIÓN APLICAR DENSIDAD
     const sendDensidades = () => {
         var campo = document.getElementById('input-Ip').value;
+
         if (campo.trim() === '') {
             alert('Debes ingresar la dirección IP');
             return;
         }
 
-        //FormaData -> lo que se va enviar en el cuerpo del mensaje al servidor
-        const formData = new FormData();
-        formData.append('Hola');
+        console.log("variable que se envia: ", campo);
+        //Objeto Json
+        const data = {
+            ip: campo
+        };
 
         const ajax = (options) => {
-            let { url, method, succes, error, data } = options;
+            let { url, method, success, error, data } = options;
             const xhr = new XMLHttpRequest();
 
-            xhr.addEventListener("readystatechange",()=>{
-                if(xhr.readyState == 4){
-                    if(xhr.status >= 200 && xhr.status < 300){
+            xhr.addEventListener("readystatechange", () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
                         succes(xhr.responseText);
-                    }else{
+                    } else {
                         let message = xhr.statusText || "Ocurrio un error";
                         error(`Error ${xhr.status}: ${message}`);
                     }
                 }
             })
             xhr.open(method || "POST", url);
-            xhr.send(data); //data es lo que se va enviar en el cuerpo html
+            xhr.send(JSON.stringify(data)); //data es lo que se va enviar en el cuerpo en formato JSON
         }
 
         ajax({
             method: "POST",
-            url: "http://192.168.8.22:3000/densidad",
+            url: "http://192.168.8.22:3000/enviar-ip",
             data: formData, //Data que se va a enviar en el cuerpo al servidor
-            succes: (Response)=>{
+            succes: (Response) => {
+                console.log("Información Enviada exitosamente", response);
                 alert("Información Enviada exitosamente");
             },
-            error: (err)=>{
-                alert("Error al enviar info exitosamente");
+            error: (err) => {
+                alert("Error al enviar info ");
+                console.error("Error al enviar info :", err);
             }
         });
     };
