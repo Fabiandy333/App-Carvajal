@@ -3,11 +3,10 @@ const randomUseragent = require("random-useragent");
 
 
 
-const configDensidad = async(ip,modelo)=>{
+const configDensidad = async(ip,modelo,densidad)=>{
 
     if(modelo== "MFP E62555"){
         console.log("Ingresa al condicional");
-
     //Navegador
     const browser = await puppeteer.launch({
         executablePath:
@@ -45,29 +44,26 @@ const configDensidad = async(ip,modelo)=>{
             await page.waitForSelector("#content", { timeout: 1000 });
             //Enviar densidad
             
-            // Modificar el atributo 'style' del elemento
-            await page.evaluate(() => {
-                const div = document.querySelector('#TonerDensityBlack');
-                console.log("Ingresa page.evaluate");
-                if (div) {
-                  const span = div.querySelector('.ui-slider-handle');
-                  console.log("Ingresa al if div");
-                  if (span) {
-                    span.style.left = '50%'; // Cambiar el porcentaje a 50%
-                    console.log("Ingresa al span hace cambios");
-                  }
-                }
-              });
+            //OBTENER DENSIDAD
+            // Encuentra el elemento <select> por su ID
+            const selectElement = await page.$('#TonerDensityBlack');
+            // Obtiene el valor seleccionado
+            const selectedValue = await selectElement.evaluate(el => el.value);
 
-            // Esperar un momento para ver los cambios 
+            console.log(`El número seleccionado es: ${selectedValue}`);
+            //FIN OBTENER DENSIDAD
+            
+            //DAR UN VALOR DENSIDAD
+            await selectElement.select(densidad);
+
             await page.waitForTimeout(2000);
             await page.click("#FormButtonSubmit");
-
-
-
-
+            console.log('Valor establecido y aplicado correctamente.');
+            //FIN DAR UN VALOR DENSIDAD
 
             console.log("La página se cargó correctamente.");
+            await browser.close();
+            
             }catch(error){
                 console.error("Error la pagina no se cargo correctamente. ");
                 await browser.close();
@@ -81,15 +77,13 @@ const configDensidad = async(ip,modelo)=>{
 
 }
 
-
-function iniciar(ip,modelo){
+function iniciar(ip,modelo,densidad){
     console.log("Ingresa 1");
-    configDensidad(ip,modelo);
+    configDensidad(ip,modelo,densidad);
     console.log("Ingresa FIN");
 }
 
-iniciar("172.22.255.36","MFP E62555")
-
+iniciar("172.22.255.36","MFP E62555","3")
 
 
 

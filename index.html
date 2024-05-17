@@ -107,7 +107,7 @@
 
                 <div class="campo">
                     <label>*Ip Impresora </label>
-                    <input class="input-text" type="text" placeholder="Ip">
+                    <input id="input-Ip" type="text" placeholder="Ip">
                 </div>
                 <div class="campo">
                     <label>*Modelo Impresora </label>
@@ -138,7 +138,7 @@
                 </select>
                 <!-- <input class="input-text" type="number" placeholder="Densidad"> -->
                 <span>%</span>
-                <input class="boton" type="submit" value="Aplicar">
+                <input class="boton" onclick="sendDensidades()" type="submit" value="Aplicar">
                 </div>
                 
             </fieldset>
@@ -220,6 +220,53 @@
     </footer>
 
   </body>
+
+<script>
+    // FUNCIÓN APLICAR DENSIDAD
+    const sendDensidades = () => {
+        var campo = document.getElementById('input-Ip').value;
+        if (campo.trim() === '') {
+            alert('Debes ingresar la dirección IP');
+            return;
+        }
+
+        //FormaData -> lo que se va enviar en el cuerpo del mensaje al servidor
+        const formData = new FormData();
+        formData.append('Hola');
+
+        const ajax = (options) => {
+            let { url, method, succes, error, data } = options;
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange",()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        succes(xhr.responseText);
+                    }else{
+                        let message = xhr.statusText || "Ocurrio un error";
+                        error(`Error ${xhr.status}: ${message}`);
+                    }
+                }
+            })
+            xhr.open(method || "POST", url);
+            xhr.send(data); //data es lo que se va enviar en el cuerpo html
+        }
+
+        ajax({
+            method: "POST",
+            url: "http://192.168.8.22:3000/densidad",
+            data: formData, //Data que se va a enviar en el cuerpo al servidor
+            succes: (Response)=>{
+                alert("Información Enviada exitosamente");
+            },
+            error: (err)=>{
+                alert("Error al enviar info exitosamente");
+            }
+        });
+    };
+
+
+</script>
 
 
 
