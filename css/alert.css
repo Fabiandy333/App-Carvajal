@@ -1,0 +1,500 @@
+:root{
+  --mandarina: #FF8201;
+  --purpura: #743BBC;
+  --azulClaro: #00B5FF;
+  --verde: #84BD00;
+  --verdeOscuro: #228847;
+
+  --azulOscuro: #043C5C;    
+  --blanco: #FFFFFF;
+
+}
+   
+   button {
+    padding: 5px 10px;
+    margin: 0 10px 30px;
+    border: none;
+    color: white;
+    background: #ccc;
+    width: auto;
+    cursor: pointer;
+  }
+  
+  .messages {
+    position: fixed;
+    width: 100%;
+  }
+  
+  .message {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 1px;
+    background: #ccc;
+    color: white;
+    cursor: pointer;
+    transform: translateY(-40px);
+    -webkit-animation: fadeIn 0.2s ease-in-out forwards;
+            animation: fadeIn 0.2s ease-in-out forwards;
+    text-transform: capitalize;
+    overflow: hidden;
+  }
+  .message .timestamp {
+    margin-left: 10px;
+    font-size: 80%;
+  }
+  
+  .message--removing {
+    height: 50px;
+    -webkit-animation: fadeOut 0.2s ease-in-out forwards;
+            animation: fadeOut 0.2s ease-in-out forwards;
+  }
+  
+  .message--paused .pie__wrapper * {
+    -webkit-animation-play-state: paused !important;
+            animation-play-state: paused !important;
+  }
+  
+  .message--success {
+    background: #2ecc40;
+  }
+  .message--success .pie__wrapper {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    background: #2ecc40;
+    transform: rotate(180deg);
+  }
+  .message--success .pie__wrapper * {
+    box-sizing: border-box;
+  }
+  .message--success .pie__wrapper .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: #7ee289;
+  }
+  .message--success .pie__wrapper .pie__spinner {
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    z-index: 200;
+    -webkit-animation: rota 5s linear infinite;
+            animation: rota 5s linear infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--success .pie__wrapper .pie__filler {
+    border-radius: 0 100% 100% 0/0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    -webkit-animation: opa 5s steps(1, end) infinite;
+            animation: opa 5s steps(1, end) infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--success .pie__wrapper .pie__mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa 5s steps(1, end) infinite reverse;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  @-webkit-keyframes rota {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rota {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes opa {
+    0% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  @keyframes opa {
+    0% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .message--info {
+    background: #7fdbff;
+  }
+  .message--info .pie__wrapper {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    background: #7fdbff;
+    transform: rotate(180deg);
+  }
+  .message--info .pie__wrapper * {
+    box-sizing: border-box;
+  }
+  .message--info .pie__wrapper .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: #e5f8ff;
+  }
+  .message--info .pie__wrapper .pie__spinner {
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    z-index: 200;
+    -webkit-animation: rota 5s linear infinite;
+            animation: rota 5s linear infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--info .pie__wrapper .pie__filler {
+    border-radius: 0 100% 100% 0/0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    -webkit-animation: opa 5s steps(1, end) infinite;
+            animation: opa 5s steps(1, end) infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--info .pie__wrapper .pie__mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa 5s steps(1, end) infinite reverse;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  @keyframes rota {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes opa {
+    0% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .message--warning {
+    background: #ff851b;
+  }
+  .message--warning .pie__wrapper {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    background: #ff851b;
+    transform: rotate(180deg);
+  }
+  .message--warning .pie__wrapper * {
+    box-sizing: border-box;
+  }
+  .message--warning .pie__wrapper .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: #ffbc81;
+  }
+  .message--warning .pie__wrapper .pie__spinner {
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    z-index: 200;
+    -webkit-animation: rota 5s linear infinite;
+            animation: rota 5s linear infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--warning .pie__wrapper .pie__filler {
+    border-radius: 0 100% 100% 0/0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    -webkit-animation: opa 5s steps(1, end) infinite;
+            animation: opa 5s steps(1, end) infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--warning .pie__wrapper .pie__mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa 5s steps(1, end) infinite reverse;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  @keyframes rota {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes opa {
+    0% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .message--alert {
+    background: #ff4136;
+  }
+  .message--alert .pie__wrapper {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    background: #ff4136;
+    transform: rotate(180deg);
+  }
+  .message--alert .pie__wrapper * {
+    box-sizing: border-box;
+  }
+  .message--alert .pie__wrapper .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: #ffa19c;
+  }
+  .message--alert .pie__wrapper .pie__spinner {
+    border-radius: 100% 0 0 100%/50% 0 0 50%;
+    z-index: 200;
+    -webkit-animation: rota 5s linear infinite;
+            animation: rota 5s linear infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--alert .pie__wrapper .pie__filler {
+    border-radius: 0 100% 100% 0/0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    -webkit-animation: opa 5s steps(1, end) infinite;
+            animation: opa 5s steps(1, end) infinite;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  .message--alert .pie__wrapper .pie__mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa 5s steps(1, end) infinite reverse;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+  }
+  @keyframes rota {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes opa {
+    0% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .message__status {
+    display: flex;
+    align-items: center;
+  }
+  
+  .message__pause-delete {
+    position: relative;
+    height: 30px;
+    width: 30px;
+  }
+  .message__pause-delete:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    background: pink;
+  }
+  .message__pause-delete:after {
+    content: "";
+    width: 5px;
+    height: 20px;
+    background: pink;
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    99% {
+      transform: translateY(0);
+      z-index: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 5;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    99% {
+      transform: translateY(0);
+      z-index: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 5;
+    }
+  }
+  @-webkit-keyframes fadeOut {
+    0% {
+      height: 50px;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 5;
+    }
+    1% {
+      transform: translateY(0);
+      z-index: 0;
+    }
+    100% {
+      height: 0;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      height: 50px;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 5;
+    }
+    1% {
+      transform: translateY(0);
+      z-index: 0;
+    }
+    100% {
+      height: 0;
+      transform: translateY(0);
+    }
+
+    
+  }
+
+  /*  ESTILOS PARA EL LOADER */
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+  }
+  .loader {
+    display: block;
+    width: 175px;
+    height: 80px;
+    margin:auto;
+    background-image: radial-gradient(circle 25px at 25px 25px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, var(--azulClaro) 100%, transparent 0), linear-gradient(var(--azulClaro) 50px, transparent 0);
+    background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+    background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
+    background-repeat: no-repeat;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .loader::before {
+    content: '';  
+    left: 60px;
+    bottom: 18px;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--blanco);
+    background-image: radial-gradient(circle 8px at 18px 18px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 18px 0px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 0px 18px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 36px 18px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 18px 36px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 30px 30px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 5px 30px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 4px at 5px 5px, var(--azulClaro) 100%, transparent 0);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    animation: rotationBack 3s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    left: 94px;
+    bottom: 15px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--blanco);
+    background-image: radial-gradient(circle 5px at 12px 12px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 12px 0px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 0px 12px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 24px 12px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 12px 24px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 20px 20px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 3px 20px, var(--azulClaro) 100%, transparent 0), radial-gradient(circle 2.5px at 3px 3px, var(--azulClaro) 100%, transparent 0);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    animation: rotationBack 4s linear infinite reverse;
+  }
+  
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
