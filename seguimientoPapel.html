@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seguimiento Guias</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/iconCarvajal.png" />
+
+    <link rel="preload" href="css/normalize.css" as="styles">
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="styles">
+    <link href="css/styles.css" rel="stylesheet">
+
+    
+    <link rel="preload" href="css/alert.css" as="styles">
+    <link href="css/alert.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <script src="Other/alert.js"></script> 
+</head>
+
+
+<body>
+    <header class="header">
+        
+        <img class="logoCarval" src="img/iconCarvajal.png" width="50" height="50">
+        <h1>Automatizaciones</h1>
+        <img class="logoTQ" src="img/iconTQ.png" width="50" height="50">
+    </header>
+    <div class="nav-bg"> 
+        <nav class="navegacion-principal contenedor">
+
+                
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#043C5C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+                        <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+                        <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" />
+                    </svg>
+                    <br>
+                    Configuración Impresora</a>   
+                      
+            <a class="navegacion-principal--activo" href="seguimientoPapel.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#743BBC" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3" />
+                </svg>
+                <br>
+                Seguimiento Guias</a>
+
+            <a href="inventario.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-warehouse" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00B5FF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M3 21v-13l9 -4l9 4v13" />
+                    <path d="M13 13h4v8h-10v-6h6" />
+                    <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
+                </svg>
+                <br>  
+                Inventario Impresora TQ</a>
+    
+            <a href="Ubicacion.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF8201" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                </svg>
+                <br>
+                Ubicación Impresora </a>
+
+                <div class="dropdown">
+
+                    <button class="dropbtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-histogram" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#228847" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 3v18h18" />
+                            <path d="M20 18v3" />
+                            <path d="M16 16v5" />
+                            <path d="M12 13v8" />
+                            <path d="M8 16v5" />
+                            <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
+                          </svg>
+                          <br>                                 
+                        Tableros BI 
+                        <!-- Flecha hacia abajo para indicar que es un menú desplegable -->
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="https://app.powerbi.com/groups/me/reports/2b0a1744-9550-4556-ad98-741ed0135820/ReportSection?experience=power-bi" target="_blank">Seguimiento De Tóner</a>
+                        <a href="https://app.powerbi.com/groups/me/reports/8f49f4cc-b3fe-4904-b0e2-a1211e0d9065/ReportSectione5439057b786682bb1eb?ctid=3d4d7762-e0e1-4b1e-9ccc-afb45486f737&experience=power-bi" target="_blank">Volumenes De Impresión</a>
+                        <a href="#service3">Alertas Impresoras</a>
+                    </div>
+                </div>
+
+            
+        </nav>
+
+    </div>
+    
+    <main>
+        <h2>Seguimiento de Remesas Papeleria Sedes TQ</h2>
+        <div class="messages"></div>
+        <!-- LOADER -->
+        <div class="overlay">
+            <div class="loader"></div>
+        </div>
+        <div class="opciones">
+            <div class="opciones_boton">
+            <input type="file" id="fileInput" class="file-input" accept=".txt">
+            <label for="fileInput" class="file-label">
+                <img class="titulo-botones-opciones-img" src="img/icon/add.svg" alt="Ícono"> <span>Seleccionar archivo</span>
+            </label>
+
+        <img class="titulo-botones-opciones-img" src="img/icon/add1.svg" alt="Actualizar" title="Subir archivo txt" onclick="sendFile()">
+        <img class="titulo-botones-opciones-img" src="img/icon/Update.svg" alt="Actualizar" title="Actualizar archivo subido al servidor" onclick="sendProcces()">
+            </div>
+            <h3>Ultima Acualización: 
+            <span class="ultimaFecha">00/00/00</span>
+         </h3>
+        
+        </div>
+        
+        <div class="table-wrapper">
+            <table class="resultTable">
+                <thead>
+                    <tr>
+                        <th>Fecha-Hora Consulta</th>
+                        <th>Número de guia</th>
+                        <th>Ciudad</th>
+                        <th>Dirección</th>
+                        <th>Estado</th>
+                        <th>N Cajas</th>
+                        <th>Fecha aprox entrega</th>
+                        <th>Fecha entrega</th>
+                        <th>Hora</th>
+                        <th>Causa</th>
+                        <th>Novedades</th>
+                        <th>Observación - N° Pedido</th>
+                        <th>Ver Guia</th>
+                        
+                        <!-- Agrega más encabezados según tus datos extraídos -->
+                    </tr>
+                </thead>
+                <tbody class="tbody"> <!-- aqui va la los datos a la tabla-->   </tbody>
+            </table>
+
+        </div>
+        
+
+        <template id="template">
+            <tr>
+                <td class="consulta"></td>                
+                <td class="numeroGuia"></td>
+                <td class="ciudad"></td>
+                <td class="direccion"></td>
+                <td class="estado"></td>
+                <td class="nCajas"></td>
+                <td class="fechaAentrega"></td>
+                <td class="fechaEntrega"></td>
+                <td class="hora"></td>
+                <td class="causa"></td>
+                <td class="novedades"></td>
+                <td class="observacion"></td>
+                <td class="VerGuia"></td>
+
+            </tr>
+        </template>
+        <script src="seguimientoPapel.js"></script>
+
+    </main>
+    
+</body>
+</html>

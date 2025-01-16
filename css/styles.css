@@ -1,0 +1,572 @@
+:root{
+    --mandarina: #FF8201;
+    --purpura: #743BBC;
+    --azulClaro: #00B5FF;
+    --verde: #84BD00;
+    --verdeOscuro: #228847;
+
+    --azulOscuro: #043C5C;    
+    --blanco: #FFFFFF;
+
+}
+
+html {
+    font-size: 60.5%; 
+    scroll-snap-type: y mandatory;
+}
+.nav-bg , .contenedor-campos, .table-wrapper, .tbody, .print_contenido{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+body{
+    font-size: 16px; /* 1rem = 10 px*/
+    /* este html y body los utilizo para proporcionar las pagina y utilizar medidas en REM*/
+    font-family: 'Courier New', Courier, monospace; /* -> fuentes en google font*/
+    /*font-family: 'Indie Flower', cursive; /* -> fuente de servidores de google*/
+    background-image: linear-gradient(to top, #DFE9F3 0%, var(--blanco) 100% );
+}
+
+h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin: 0;
+}
+.detalle_dispositivo{
+    color: var(--blanco);
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: left;
+}
+
+h3 {
+    font-size: 0.8rem;
+    text-align: left;
+}
+h1,h2,h3 {
+    font-family: 'monospace', cursive; /* -> fuente de servidores de google*/
+}
+
+h4 {
+    font-size: 1.3rem;
+    text-align:justify;
+    color: var(--azulOscuro);
+}
+
+.contenedor-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+.contenedor {
+    width: auto;
+    margin-top: 0; /* margen de la barra para el lado de arriba*/
+    margin-right: auto; /* el margen de la barra la toma automaticamente lado derecho*/
+    margin-bottom: 0; /* margen de la barra para el lado de abajo*/
+    margin-left: auto; /* el margen de la barra la toma automaticamente lado isquierdo para centrar*/
+}
+
+    /* Estilos para el input de tipo archivo */
+    input[type="file"] {
+        /* Personaliza aquí tus estilos */
+        border: 1px solid var(--verdeOscuro);
+        padding: 10px;
+        background-color: var(--verdeOscuro);
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    
+.nav-bg {
+    background-color: var(--verde); /* Color fondo barra de navegacion*/
+}
+.navegacion-principal {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.navegacion-principal a {
+    /* color: var(--blanco); */
+    text-decoration: none; /* quitar raya de navegacion debajo*/
+    font-size: 1.2rem;
+    font-weight: bold; /* Negrilla*/
+    padding: 1rem;
+}
+
+
+.navegacion-principal--activo,
+.navegacion-principal a:hover{ /* cuando se pasa el mouse por encima de la barra de navegación */
+    background-color: var(--blanco);
+    color: black;
+}
+
+.ultimaFecha, .ultimaHora{
+    /* background-color: var(--verdeOscuro); */
+    margin-right: 0%;
+}
+
+.opciones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.opciones_boton{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0px 20px 10px;
+}
+
+.file-input {
+    display: none;
+    align-items: center;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-label img {
+    margin-right: 10px;
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px; /* Ajusta el tamaño según sea necesario */
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+
+}
+
+
+/* ------------------ ESTILO BOTON ------------------*/
+
+/* CSS */
+.boton {
+  appearance: button;
+  background-color: var(--verdeOscuro);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid var(--verdeOscuro);
+  border-radius: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,rgba(46, 54, 80, 0.075) 0 1px 1px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 3.5;
+  margin: 0;
+  padding: .5rem 1rem;
+  text-align: center;
+  text-transform: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.boton:focus:not(:focus-visible),
+.boton:focus {
+  outline: 0;
+}
+
+.boton:hover {
+  background-color: #3733E5;
+  border-color: #3733E5;
+}
+
+.boton:focus {
+  background-color: #413FC5;
+  border-color: #3E3BBA;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset, rgba(46, 54, 80, 0.075) 0 1px 1px, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.boton:active {
+  background-color: #3E3BBA;
+  background-image: none;
+  border-color: #3A38AE;
+  box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset;
+}
+
+.boton:active:focus {
+  box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.boton:disabled {
+  background-image: none;
+  box-shadow: none;
+  opacity: .65;
+  pointer-events: none;
+}
+/* ------------------ FIN ESTILO BOTON ------------------*/
+/* Estilos básicos de la barra de navegación */
+
+nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Estilo para los elementos de la barra de navegación al pasar el mouse sobre ellos */
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+
+/* Estilo para el botón que activa el menú desplegable */
+.dropdown .dropbtn {
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    font-weight: bold; /* Negrilla*/
+}
+
+/* Estilo para los elementos del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Estilo para los elementos del menú desplegable al pasar el mouse sobre ellos */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    
+}
+
+/* Estilo para el elemento del menú desplegable al pasar el mouse sobre él */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    display: block;
+}
+
+/* Mostrar el menú desplegable cuando se pasa el mouse sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block; 
+    
+}
+
+.dropdown:hover .dropbtn {
+    background-color: var(--blanco);
+    color: black;
+}
+
+/* Configuraciones Formulario */
+
+.formulario {
+    background-color: var(--blanco);
+    width: min(60rem,100%); 
+    /*width: auto;*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset{
+    font-family: 'Courier New', Courier, monospace;
+    border: 5px solid var(--azulOscuro);
+    background: #ddd;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.formulario legend {
+    background: var(--azulOscuro);
+    color: var(--blanco);
+    padding: 5px 10px;
+    font-size: 1.8rem;
+    border-radius: 10rem;
+    box-shadow: 0 0 0 5px #ddd;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+
+
+.campo {
+    margin-bottom: 1rem;
+
+}
+
+.campo label{
+    color: var(--azulOscuro);
+    font-weight:  bold;
+    margin-bottom:  .5rem;
+    display: block;
+
+}
+
+.campo-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+
+
+/* --------------------------------------------- ESTILO TABLA ------------------------------------------------  */ 
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 0px 20px 20px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+    max-width: 100%;
+    overflow-x: auto;
+    max-height: 750px; /* 655PX*/
+    overflow-y: auto;
+    position: relative;
+
+}
+
+.table-container {
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+}
+.resultTable {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%; 
+    background-color: white;
+    overflow-x: auto; /* Barra de desplazamiento horizontal */
+}
+
+
+.resultTable thead th {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.resultTable td, .resultTable th {
+    text-align: center;
+    padding: 2px;
+}
+
+.resultTable td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 11px;
+}
+
+.thead {
+    position: sticky;
+    left: 0;
+    background-color: #F8F8F8; /* Color de fondo para las filas fijas */
+    z-index: 1; /* Asegura que las filas estén por encima del contenido */
+}
+
+.resultTable thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.resultTable thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.resultTable tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Estilo para la barra de desplazamiento */
+.table-wrapper::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento vertical */
+    height: 12px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #4FC3A1; /* Color del pulgar de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 3px solid #fff; /* Espacio alrededor del pulgar */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color del pulgar al pasar el ratón */
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de fondo de la pista */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .resultTable {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .resultTable thead, .resultTable tbody, .resultTable thead th {
+        display: block;
+    }
+    .resultTable thead th:last-child{
+        border-bottom: none;
+    }
+    .resultTable thead {
+        float: left;
+    }
+    .resultTable tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .resultTable td, .resultTable th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .resultTable thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .resultTable tbody tr {
+        display: table-cell;
+    }
+    .resultTable tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .resultTable tr:nth-child(even) {
+        background: transparent;
+    }
+    .resultTable tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .resultTable tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .resultTable tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+/* --------------------------------------------- ESTILO IMPRESORA ------------------------------------------------  */ 
+
+@media (min-width: 768px) {
+    .print_contenido {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+    }
+}
+.mi_tabla_print th, .mi_tabla_print td {
+    text-align: left;
+    padding: 8px;
+  }
+  .mi_tabla_print th {
+    background-color: #f2f2f2;
+  }
+
+  #print_img {
+    width: 100%;
+  }
+
+  .subtitulo_print {
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: center;
+    align-items: end;
+  }
+
+
+
+  /*  ---------------- Boton Salir ---------------- */
+
+.titulo-botones{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.titulo-botones-opciones{
+    display: flex;
+    margin: 0px 35px 0px;
+    gap: 2rem;
+    
+}
+
+.titulo-botones-opciones-img, .file-label {
+    cursor: pointer;
+    opacity:0.7;
+    border-radius: 30%;
+}
+.titulo-botones-opciones-img:hover, .file-label:hover{
+    opacity:1;
+    /* background-color: var(--verdeOscuro); */
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+/* BOTONES DE IMPRIMIR ACTA */
+
+.titulo-botones-opciones-img{
+    height: 50px;
+    width: 50px;
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Inventario Carvajal</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/iconCarvajal.png" />
+
+    <link rel="preload" href="css/normalize.css" as="styles">
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="styles">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link rel="preload" href="css/alert.css" as="styles">
+    <link href="css/alert.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <script src="Other/alert.js"></script>
+
+</head>
+
+
+<body>
+    <header class="header">
+
+        <img class="logoCarval" src="img/iconCarvajal.png" width="50" height="50">
+        <h1>Automatizaciones</h1>
+        <img class="logoTQ" src="img/iconTQ.png" width="50" height="50">
+
+    </header>
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor">
+
+
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#043C5C" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+                    <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+                    <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" />
+                </svg>
+                <br>
+                Configuración Impresora</a>
+
+            <a href="seguimientoPapel.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#743BBC" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3" />
+                </svg>
+                <br>
+                Seguimiento Guias</a>
+
+            <a  href="inventario.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-warehouse"
+                    width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00B5FF" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 21v-13l9 -4l9 4v13" />
+                    <path d="M13 13h4v8h-10v-6h6" />
+                    <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
+                </svg>
+                <br>
+                Inventario Impresora TQ</a>
+                
+                <a class="navegacion-principal--activo" href="UsuariosColor.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-warehouse"
+                        width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00B5FF" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 21v-13l9 -4l9 4v13" />
+                        <path d="M13 13h4v8h-10v-6h6" />
+                        <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
+                    </svg>
+                    <br>
+                    Permisos A Color</a>
+
+            <a href="Ubicacion.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF8201" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                </svg>
+                <br>
+                Ubicación Impresora </a>
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-histogram"
+                        width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#228847" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 3v18h18" />
+                        <path d="M20 18v3" />
+                        <path d="M16 16v5" />
+                        <path d="M12 13v8" />
+                        <path d="M8 16v5" />
+                        <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
+                    </svg>
+                    <br>
+                    Tableros BI
+                    <!-- Flecha hacia abajo para indicar que es un menú desplegable -->
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://app.powerbi.com/groups/me/reports/2b0a1744-9550-4556-ad98-741ed0135820/ReportSection?experience=power-bi"
+                        target="_blank">Seguimiento De Tóner</a>
+                    <a href="https://app.powerbi.com/groups/me/reports/8f49f4cc-b3fe-4904-b0e2-a1211e0d9065/ReportSectione5439057b786682bb1eb?ctid=3d4d7762-e0e1-4b1e-9ccc-afb45486f737&experience=power-bi"
+                        target="_blank">Volumenes De Impresión</a>
+                    <a href="#service3">Alertas Impresoras</a>
+                </div>
+            </div>
+
+
+        </nav>
+
+    </div>
+
+    <main>
+        <div class="titulo-botones">
+            <h2>Inventario Carvajal - TQ</h2>
+            <div class="titulo-botones-opciones">
+                <img class="titulo-botones-opciones-img" src="img/icon/Update.svg" width="50px" height="50px" alt="Actualizar" title="Actualizar" onclick="actualizarInventario() ">
+                <img class="titulo-botones-opciones-img" src="img/icon/Filter.svg" width="50px" height="50px" alt="Filtros" title="Quitar filtros"onclick="sendLimpiarFiltros()">
+                <img class="titulo-botones-opciones-img" src="img/icon/Export.svg" width="50px" height="50px" alt="Exportar" title="Exportar a Excel"onclick="exportReportToExcel(this)">
+
+            </div>
+
+        </div>
+        <div class="messages"></div>
+        <!-- LOADER -->
+        <div class="overlay">
+            <div class="loader"></div>
+        </div>
+        <div class="table-wrapper">
+            <table class="resultTable">
+                <thead class="thead">
+                    <tr>
+                        <th>Foto</th>
+                        <th>Serial</th>
+                        <th>Tipo Dispositivo</th>
+                        <th>Nombre Dispositivo</th>
+                        <th>Tipo De Conexión</th>
+                        <th>Dirección Ip</th>
+                        <th>Sede</th>
+                        <th>Edificio</th>
+                        <th>Piso</th>
+                        <th>Área - Pasillo</th>
+                        <th>Mac</th>
+                        <th>Gateway</th>
+                        <th>Mascara</th>
+                        <th>Firmware</th>
+                        <th>Asignación</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Color / BN</th>
+                        <th>Estado De CI</th>
+                        <th>Departamento</th>
+                        <th>Ciudad</th>
+                        <th>Dirección</th>
+                        <th>Observación</th>
+                        <th>Ultima Fecha Confirmación</th>
+                        <th>Analista</th>
+                        <th>Densidad Tóner</th>
+                        <th>Observación Densidad</th>
+                    </tr>
+                    <tr>
+                        <td><input disabled type="text" id="filtroFoto" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroSerial" oninput="filterTable()"></td>
+
+                        <!-- <td><input type="text" id="filtroTipoCI" oninput="filterTable()"></td> -->
+                        <td><select type="text" id="filtroTipoCI" oninput="filterTable()"></select></td>
+
+                        <td><input type="text" id="filtroNombre" oninput="filterTable()" autofocus></td>
+                        <td><input type="text" id="filtroTipoConexion" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroDireccionIp" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroSede" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroEdificio" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroPiso" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroArea" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroMac" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroGateway" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroMascara" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroFirmaware" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroAsignacion" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroMarca" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroModelo" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroColor-BN" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroEstadoCI" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroDepartamento" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroCiudad" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroDireccion" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroObservacion" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroUltimaFechaConfirmacion" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroAnalista" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroDensidadToner" oninput="filterTable()"></td>
+                        <td><input type="text" id="filtroObservacionDensidad" oninput="filterTable()"></td>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <template id="template">
+            <tr>
+                <td class="Foto"></td>
+
+                <td class="Serial"></td>
+                <td class="TipoDeCI"></td>
+                <td class="NombreDispositivo"></td>
+                <td class="TipoDeConexion"></td>
+                <td class="DireccionIp"></td>
+                <td class="Sede"></td>
+                <td class="Edificio"></td>
+                <td class="Piso"></td>
+                <td class="Area"></td>
+                <td class="Mac"></td>
+                <td class="Gateway"></td>
+                <td class="Mascara"></td>
+                <td class="Firmware"></td>
+                <td class="Asignacion"></td>
+                <td class="Marca"></td>
+                <td class="Modelo"></td>
+                <td class="ColorBN"></td>
+                <td class="EstadoDeCI"></td>
+                <td class="Departamento"></td>
+                <td class="Ciudad"></td>
+                <td class="Direccion"></td>
+                <td class="Observacion"></td>
+                <td class="UltimaFechaConfirmacion"></td>
+                <td class="Analista"></td>
+                <td class="DensidadToner"></td>
+                <td class="ObservacionDensidad"></td>
+            </tr>
+        </template>
+        <script src="inventario.js"></script>
+
+    </main>
+
+
+</body>
+
+</html>

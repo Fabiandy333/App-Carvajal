@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Información Impresora</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/iconCarvajal.png" />
+
+    <link rel="preload" href="css/normalize.css" as="styles">
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="styles">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link rel="preload" href="css/alert.css" as="styles">
+    <link href="css/alert.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <script src="Other/alert.js"></script>
+</head>
+
+<body>
+    <header class="header">
+    </header>
+    
+    <div class="nav-bg"> 
+        <nav class="navegacion-principal contenedor">
+            <h1 class="detalle_dispositivo">Detalles del dispositivo</h1>
+        </nav>
+    </div>
+    <main>
+        <div class="subtitulo_print">
+            <div class="subtitulo_print--nombre">
+                <h2 id="nombre-dispositivo"></h2>
+            </div>
+             <div class="subtitulo_print--botones">
+                <img class="titulo-botones-opciones-img" src="img/icon/instalación.png" alt="Acta Instalación"  title="Imprimir Acta Instalación" data-nameacta="Instalacion" onclick="validarImpresionDesdeHTML(this)">
+                <img class="titulo-botones-opciones-img" src="img/icon/Mantenimiento.png" alt="Acta Mantenimiento"  title="Imprimir Acta Mantenimiento" data-nameacta="Mantenimiento" onclick="validarImpresionDesdeHTML(this)">
+                <img class="titulo-botones-opciones-img" src="img/icon/suministro.png" alt="Acta suministro" title="Imprimir Acta Suministro" data-nameacta="Suministro" onclick="validarImpresionDesdeHTML(this)">
+                <img class="titulo-botones-opciones-img" src="img/icon/salidavarias.png" alt="Acta Salida Varias" title="Imprimir Documento Salida Varias" data-nameacta="SalidaVarias" onclick="validarImpresionDesdeHTML(this)">
+                <label for="copias">Copias</label>
+                <input type="number" class="copias" id="nCopias" value="1" min="1" max="20">
+                <img class="titulo-botones-opciones-img" src="img/icon//exit.svg" alt="Salir"  title="Salir" onclick="closed()">
+             </div>
+        </div>
+        <div class="messages"></div>
+        <!-- LOADER -->
+        <div class="overlay">
+            <div class="loader"></div>
+        </div>
+
+        <div class="print_contenido">
+            <img id="print_img" alt="Imagen impresora">
+       
+            <table class="mi_tabla_print">
+                <tbody class="info_print">
+                    <tr>
+                        <th>Serial:</th>
+                        <td id="serial"></td>
+                    </tr>
+                    <tr>
+                        <th>Tipo Dispositivo:</th>
+                        <td id="tipo-ci"></td>
+                    </tr>
+                    <tr>
+                        <th>Nombre Dispositivo</th>
+                        <td id="nombre-dispositivo-2"></td>
+                    </tr>
+                    <tr>
+                        <th>Tipo De Conexión</th>
+                        <td id="tipo-conexion"></td>
+                    </tr>
+                    <tr>
+                        <th>Dirección Ip</th>
+                        <td id="direccion-ip"></td>
+                    </tr>
+                    <tr>
+                        <th>Sede</th>
+                        <td id="sede"></td>
+                    </tr>
+                    <tr>
+                        <th>Edificio</th>
+                        <td id="edificio"></td>
+                    </tr>
+                    <tr>
+                        <th>Área - Pasillo</th>
+                        <td id="area"></td>
+                    </tr>
+                    <tr>
+                        <th>Mac</th>
+                        <td id="mac"></td>
+                    </tr>
+                    <tr>
+                        <th>Gateway</th>
+                        <td id="gateway"></td>
+                    </tr>
+                    <tr>
+                        <th>Mascara</th>
+                        <td id="mascara"></td>
+                    </tr>
+                    <tr>
+                        <th>Firmware</th>
+                        <td id="firmware"></td>
+                    </tr>
+                    <tr>
+                        <th>Asignación</th>
+                        <td id="asignacion"></td>
+                    </tr>
+                    <tr>
+                        <th>Marca</th>
+                        <td id="marca"></td>
+                    </tr>
+                    <tr>
+                        <th>Modelo</th>
+                        <td id="modelo"></td>
+                    </tr>
+                    <tr>
+                        <th>Color / BN</th>
+                        <td id="color-bn"></td>
+                    </tr>
+                    <tr>
+                        <th>Estado De CI</th>
+                        <td id="estado-ci"></td>
+                    </tr>
+                    <tr>
+                        <th>Departamento</th>
+                        <td id="departamento"></td>
+                    </tr>
+                    <tr>
+                        <th>Ciudad</th>
+                        <td id="ciudad"></td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td id="direccion"></td>
+                    </tr>
+                    <tr>
+                        <th>Observación</th>
+                        <td id="observacion"></td>
+                    </tr>
+                    <tr>
+                        <th>Ultima Fecha Confirmación</th>
+                        <td id="ultima-fecha-confirmacion"></td>
+                    </tr>
+                    <tr>
+                        <th>Analista</th>
+                        <td id="analista"></td>
+                    </tr>
+                    <tr>
+                        <th>Densidad Tóner</th>
+                        <td id="densidad-toner"></td>
+                    </tr>
+                    <tr>
+                        <th>Observación Densidad</th>
+                        <td id="observacion-densidad"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="Impresora.js"></script>
+    </main>
+    
+
+</body>
+</html>

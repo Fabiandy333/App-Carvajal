@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Carvajal Printer TQ</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/iconCarvajal.png" />
+
+    <link rel="preload" href="css/normalize.css" as="styles">
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <link rel="preload" href="css/alert.css" as="styles">
+    <link href="css/alert.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="styles">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <script src="Other/alert.js"></script>
+
+</head>
+
+
+<body>
+    <header class="header">
+        
+        <img class="logoCarval" src="img/iconCarvajal.png" width="50" height="50">
+        <h1>Automatizaciones</h1>
+        <img class="logoTQ" src="img/iconTQ.png" width="50" height="50">
+    </header>
+
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor ">
+
+            <a class="navegacion-principal--activo" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#043C5C" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+                    <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+                    <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" />
+                </svg>
+                <br>
+                Configuración Impresora</a>
+
+            <a href="seguimientoPapel.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#743BBC" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3" />
+                </svg>
+                <br>
+                Seguimiento Guias</a>
+
+            <a href="inventario.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-warehouse"
+                    width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00B5FF" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 21v-13l9 -4l9 4v13" />
+                    <path d="M13 13h4v8h-10v-6h6" />
+                    <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
+                </svg>
+                <br>
+                Inventario Impresora TQ</a>
+
+            <a href="Ubicacion.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="40"
+                    height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF8201" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                </svg>
+                <br>
+                Ubicación Impresora </a>
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-histogram"
+                        width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#228847" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 3v18h18" />
+                        <path d="M20 18v3" />
+                        <path d="M16 16v5" />
+                        <path d="M12 13v8" />
+                        <path d="M8 16v5" />
+                        <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
+                    </svg>
+                    <br>
+                    Tableros BI
+                    <!-- Flecha hacia abajo para indicar que es un menú desplegable -->
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://app.powerbi.com/groups/me/reports/2b0a1744-9550-4556-ad98-741ed0135820/ReportSection?experience=power-bi"
+                        target="_blank">Seguimiento De Tóner</a>
+                    <a href="https://app.powerbi.com/groups/me/reports/8f49f4cc-b3fe-4904-b0e2-a1211e0d9065/ReportSectione5439057b786682bb1eb?ctid=3d4d7762-e0e1-4b1e-9ccc-afb45486f737&experience=power-bi"
+                        target="_blank">Volumenes De Impresión</a>
+                    <a href="#service3">Alertas Impresoras</a>
+                </div>
+            </div>
+
+
+        </nav>
+
+    </div>
+
+    <main>
+        <h2>Configuración Impresora</h2>
+        <!-- LOADER -->
+        <div class="overlay">
+            <div class="loader"></div>
+        </div>
+
+        <div class="messages"></div>
+        <!-- EMPIEZA EL FORMULARIO -->
+
+        <form class="formulario">
+
+            <div class="contenedor-campos">
+
+                <fieldset>
+                    <legend>Información Requerida Para configuración</legend>
+                
+                    <div class="contenedor-info">
+                        <div class="campo">
+                            <label>*Ip Impresora </label>
+                            <input id="input-Ip" type="text" placeholder="Ip">
+                        </div>
+                        <div class="campo">
+                            <label>*Modelo Impresora </label>
+                            <select id="mi-select-modelo" class="input-text">
+                                <option value="MFP E62555">MFP E62555</option>
+                                <option value="MFP E62655">MFP E62655</option>
+                                <option value="Laser E60155">Laser E60155</option>
+                                <option value="Color MFP E67550">Color MFP E67550</option>
+                                <option value="Color MFP E67650">Color MFP E67650</option>
+                            </select>
+                            <!-- <input class="input-text" type="text" placeholder="Modelo"> -->
+                        </div>
+                    </div>
+                
+                
+                </fieldset>
+
+                <fieldset>
+                    <legend>Configuración Credenciales Administrador</legend>
+                
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración credenciales clave administrador impresora.
+                        </h4>
+                        <div class="campo">
+                            <label>Credenciales Administrador</label>
+                            <input id="input-name-pass" class="input-pass" type="text" placeholder="Contraseña" value="CarvajalPrint1" disabled>
+
+                            <input class="boton" onclick="sendCredenciales()" type="button" value="Aplicar">
+                        </div>
+
+
+                
+                    </div>
+                </fieldset>
+
+                <fieldset>
+
+                    <legend>Configuración Basica Información</legend>
+                
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración de información del dispositivo campos "Alias/Nombre Impresora", "Ubicación del dispositivo",
+                            "Número de activo", "Nombre de la empresa" y "Persona de contacto".
+                        </h4>
+
+                        <div class="campo">
+                            <label>Alias/Nombre Impresora</label>
+                            <input id="input-name-print" class="input-text" type="text" placeholder="Nombre"
+                                oninput="this.value = this.value.toUpperCase()">
+                        </div>
+                        <div class="campo">
+                            <label>Ubicación Impresora</label>
+                            <input id="input-location-print" class="input-text" type="text" placeholder="Ubicación - Área"
+                                oninput="this.value = this.value.toUpperCase()">
+                        </div>
+
+                        <div class="campo">
+                            <label>Numero de activo</label>
+                            <input id="input-number-activo" class="input-Nactivo" type="text" placeholder="Numero de activo" value="XXXXXX" disabled>
+                        </div>
+                        
+                        <div class="campo">
+                            <label>Nombre Empresa</label>
+                            <input id="input-name-enterprise" class="input-enterprise" type="text" placeholder="Nombre Empresa" value="" disabled>
+                        </div>
+
+                        <div class="campo">
+                            <label>Persona De Contacto</label>
+                            <input id="input-name-contact" class="input-contact" type="text" placeholder="Tecnoquimicas S.A" value="1800 Opc 1" disabled>
+                        </div>
+                        
+                        <input class="boton" onclick="sendInfo()" type="button" value="Aplicar">
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Configuración Densidad De Tóner</legend>
+
+                    <div class="contenedor-info">
+                        <h4>Configuración de densidad de tóner para la impresoras de B/N.</h4>
+                        <div class="campo">
+                            <label>Densidad Impresora</label>
+                            <select id="mi-select-densidad" class="input-text">
+                                <option value="0">0</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span>%</span>
+                            <input class="boton" onclick="sendDensidades()" type="button" value="Aplicar">
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Configuración Servidor Correo SMTP</legend>
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración E-mail activa "Escaneo a correo electronico", añade 
+                            "Nombre del servidor = mailer.tecnoquimicas.com"
+                            y configuración de campos de direcciones y mensaje como "Remitente","Dirección predeterminada",
+                            "Nombre predeterminado" y "Asunto".
+                        </h4>
+                        <div class="campo">
+                            <input class="boton" onclick="sendCorreo()" type="button" value="Aplicar">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Habilitar Contactos</legend>
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración de contactos de red, activa "Busqueda rapida", "Habilitar contactos de red (Utilziando servidor LDAP)",
+                            "Dirección de servidor LDAP", Requisitos de autenticación del servidor como "Nombre de usuario",
+                            "Contraseña", "Ruta para iniciar la búsqueda (BaseDN, Raíz de búsqueda)", "Nombre del destinatario",
+                            "Dirección correo electrónico destinatario" y "Numero del fax del destinatario". 
+                        </h4>
+                        <div class="campo">
+                            <input class="boton" type="button" value="Aplicar">
+                            <!-- onclick="sendContactos()" -->
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Configuración Identificación De La Red</legend>
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración de red TCP/IP, como "Nombre de host","Nombre de dominio(IPv4/IPv6)",
+                            DNS(IPv4) "Primario" y "Secundario".
+                        </h4>
+                        <div class="campo">
+                            <input class="boton" onclick="sendConfigRed()" type="button" value="Aplicar">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Configuración De Red SNMP</legend>
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración de red SNMP habilita "Acceso SNMPv1/v2 de lectura/escritura",
+                             define la comunidad para campos "Definir nombre de comunidad",
+                             "Confirmar nombre comunidad escritura","Obtener nombre de comunidad",
+                             "Confirmar nombre comunidad lectura" y activa "Deshabilitar nombre de comunidad de lectura predeterminado de SNMPv1/v2 "public"".
+                        </h4>
+                        <div class="campo">
+                            <input class="boton" onclick="sendConfigRedSNMP()" type="button" value="Aplicar">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Configuración De Comunicación Segura</legend>
+                    <div class="contenedor-info">
+                        <h4>
+                            Configuración de comunicación segura protocolo SSL/TLS, solo activa "TLS 1.2",
+                            desactiva "TLS 1.1" y "TLS 1.0"
+                        </h4>
+                
+                        <div class="campo">
+                            <input class="boton" type="button" value="Aplicar">
+                        </div>
+                    </div>
+                </fieldset>
+            </div> <!-- contenedor de los campos-->
+        </form>
+
+    </main>
+
+</body>
+
+
+
+<footer>
+    <p>Todos los derechos reservados. Fabian Andres Camayo</p>
+</footer>
+
+</html>

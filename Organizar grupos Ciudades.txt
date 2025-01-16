@@ -1,0 +1,12 @@
+Ubicación Impresora()
+
+Valle Del Cauca(San Nicolas(Presidencia(Piso 1,Piso 2),Principal(Piso 1,Piso 2),Complejo(Oficina Carvajal,Piso 1, Piso2),Sucursal(Piso 1, Piso2)),
+	Indugraficas(Bodega,Piso 1, Piso 2),
+		Coldesivos(Bodega, Administrativo),
+			Yumbo(),
+Jamundí(),Tecnofar(),Tecnosur(),Tecnocendis())
+
+Antioquia()
+Atlantico()
+Santander()
+Risaralda()

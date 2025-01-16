@@ -1,0 +1,58 @@
+server.js
+
+puppeteer -> controlar el navegador
+npm i puppeteer # Downloads compatible Chrome during installation.
+npm i puppeteer-core # Alternatively, install as a library, without downloading Chrome.
+
+
+randomUseragent -> generación aleatoria de una cadena de agente de usuario real WebScraping
+npm i rand-user-agent
+
+
+multer -> cargar archivos
+npm install --save multer
+
+express -> Ayudantes HTTP (redireccionamiento, almacenamiento en caché, etc.)
+npm install express
+
+mime-types -> Determinar tipo de archivo
+npm install mime-types
+
+cors -> middleware  para habilitar
+npm install cors
+
+xlsx-populate -> Manejar archivos excel
+npm install xlsx-populate
+
+Crom -> crear tareas con una hora o fecha especifica
+npm install --save node-cron
+
+-----  MANEJO DE PDF IMAGENES CON OCR -----
+
+pdf-lib Obtener las paginas-
+npm install pdf-lib  
+
+sharp -> Mejorar la resolución de las imagenes que extrae
+npm install sharp
+
+Comvertir las paginas en IMG poppler
+npm install pdf-poppler -> Reemplazar pdf-image
+
+
+Usar OCR
+npm install tesseract.js 
+
+Bilbioteca para conectar modelos de IA
+npm install @huggingface/inference
+
+Token -> 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
+ 
+Base de datos -> 
+
+Pss: 1234
+Puerto: 5432
+
+http://127.0.0.1:5500/inventario.html
+
+
+
