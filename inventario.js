@@ -5,9 +5,6 @@ $fragment = d.createDocumentFragment(); //guardar en un fragmento y luego insert
 $tbody = d.querySelector(".tbody");
 //inputs = Array.from(d.querySelectorAll("thead input"));
 
-
-
-
 const inputs = [
     d.getElementById("filtroFoto"),
     d.getElementById("filtroSerial"),
@@ -35,7 +32,8 @@ const inputs = [
     d.getElementById("filtroUltimaFechaConfirmacion"),
     d.getElementById("filtroAnalista"),
     d.getElementById("filtroDensidadToner"),
-    d.getElementById("filtroObservacionDensidad")
+    d.getElementById("filtroObservacionDensidad"),
+    d.getElementById("filtroTipoImpresion"),
 ];
 const ListTipoCI = [""];
 // Funcion getAllRemesas Tarer todas las remesas mediante la funcion AJAX creada le pasamos los parametros
@@ -50,25 +48,25 @@ const getAllBase = () => {
         console.log("Tiene data por lo cual ingresa al IF");
     } else {
         console.log("NO Tiene data por lo hace petición al servidor");
-ajax({
-    // method: "GET", omiti esta por defecto para GET
-    url: `http://${Ip}:3000/inventario-data`,
-    //Funcion en caso de exito en HTML 
-    success: (res) => {
-        //console.log("");
-        localStorage.setItem('inventarioData',JSON.stringify(res));
-        renderTable(res);
-    },
-    //Funcion en caso de error en HTML
-    error: (err) => {
-        console.log(err);
-        $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);
-        showMessage("Error no hay conexión con el servidor...","alert");
-    }
-    // data: null -> omiti data
-})
+        ajax({
+            // method: "GET", omiti esta por defecto para GET
+            url: `http://${Ip}:3000/inventario-data`,
+            //Funcion en caso de exito en HTML 
+            success: (res) => {
+                //console.log("");
+                localStorage.setItem('inventarioData', JSON.stringify(res));
+                renderTable(res);
+            },
+            //Funcion en caso de error en HTML
+            error: (err) => {
+                console.log(err);
+                $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);
+                showMessage("Error no hay conexión con el servidor...", "alert");
+            }
+            // data: null -> omiti data
+        })
 
-}
+    }
 
 }
 
@@ -134,6 +132,7 @@ const renderTable = (res) => {
             $template.querySelector(".DensidadToner").textContent = `${varDensidad*100}%`;
         }
         $template.querySelector(".ObservacionDensidad").textContent = element['OBSERVACION TONER'];
+        $template.querySelector(".TipoImpresion").textContent = element['Tipo Impresion'];
 
         //Clonar el template para que quede en memoria
         let $clone = d.importNode($template, true);
@@ -225,15 +224,15 @@ function exportReportToExcel() {
 
 //RECARGA PAGINA PARA QUE ACTUALICE EL IVENTARIO
 // Función para recargar la página
-function recargarPagina() {
-    location.reload();
-    console.log('Se recargo la pagina');
-}
+// function recargarPagina() {
+//     location.reload();
+//     console.log('Se recargo la pagina');
+// }
 
 // Convertir 5 horas a milisegundos (5 horas * 60 minutos * 60 segundos * 1000 milisegundos)
 const cincoHorasEnMilisegundos = 5 * 60 * 60 * 1000;
 
 // Usar setInterval para llamar a la función recargarPagina cada 5 horas
-setInterval(recargarPagina, cincoHorasEnMilisegundos);
+setInterval(actualizarInventario, cincoHorasEnMilisegundos);
 
 //location.reload();

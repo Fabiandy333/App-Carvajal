@@ -76,9 +76,9 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
     await page.setViewport({ width: 1920, height: 1080 });
     await page.goto(
       "https://status.solistica.com/Status/consulta_remesa.aspx",
-      { timeout: 3000 }
+      { timeout: 20000 }
     );
-    await page.waitForSelector("#vREMISION", { timeout: 1000 });
+    await page.waitForSelector("#vREMISION", { timeout: 3000 });
 
 
     // Código a ejecutar si la página se carga correctamente
@@ -88,7 +88,7 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
     await page.evaluate(() => {
       document.querySelector("#vREMISION").value = ""; // Limpiar el campo de entrada antes de escribir
     });
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Retardo de 100 milisegundos
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // Retardo de 100 milisegundos
 
     console.log("NúmeroP2: ", nRemesa);
     await page.click("#vREMISION");
@@ -96,8 +96,11 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
     await remesaInput.type(nRemesa.toString());
 
     await page.click("#IMAGE2"); // Click en el botón de buscar en la remesa
-    await page.waitForSelector(".gx-tab-padding-fix-1", { timeout: 1000 });
-    await page.waitForSelector("#TABLE23", { timeout: 1000 });
+    console.log("Da click al boton buscar");
+    // await page.waitForSelector(".gx-tab-padding-fix-1", { timeout: 20000 });
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // Retardo de 100 milisegundos
+    await page.waitForSelector("#TABLE23", { timeout: 20000 });
+    console.log("Ingresa a la pagina y deberia esperar la info");
 
     // Extracción de datos de la página
 
@@ -214,31 +217,31 @@ const inputRemesaSolistica = async (browser, page, nRemesa, intentos = 0) => {
 };
 
 // Primera Función // Leer el archivo de texto //Devuelve Un Array
-/*
-function busquedaSolis(filePath) {
-  return new Promise((resolve, reject) => {
-    // Patrón de búsqueda
-    const pattern = /B\d{31}/g;
 
-    fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-        reject("Error al leer el archivo: " + err);
-        return;
-      }
+// function busquedaSolis(filePath) {
+//   return new Promise((resolve, reject) => {
+//     // Patrón de búsqueda
+//     const pattern = /B\d{31}/g;
 
-      // Buscar coincidencias y extraer los últimos 12 dígitos
-      const matches = data.match(pattern);
-      const numerosExtraidos = matches.map((match) =>
-        parseInt(match.substr(-12).trim())
-      );
+//     fs.readFile(filePath, "utf8", (err, data) => {
+//       if (err) {
+//         reject("Error al leer el archivo: " + err);
+//         return;
+//       }
 
-      resolve(numerosExtraidos);
-    });
-  });
-}
-  */
+//       // Buscar coincidencias y extraer los últimos 12 dígitos
+//       const matches = data.match(pattern);
+//       const numerosExtraidos = matches.map((match) =>
+//         parseInt(match.substr(-12).trim())
+//       );
 
-// Segunda función
+//       resolve(numerosExtraidos);
+//     });
+//   });
+// }
+  
+
+//Segunda función
 function busquedaSolis(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, "utf8", (err, data) => {

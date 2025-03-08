@@ -47,7 +47,7 @@ if (serial) {
             document.getElementById('ciudad').textContent = res['Ciudad'];
             document.getElementById('direccion').textContent = res['Dirección Actual'];
             document.getElementById('observacion').textContent = res['OBSERVACION'];
-
+            
             const serialDate = res['Ultima Fecha Confirmacion'];
             const jsDate = excelDateToJSDate(serialDate);
             document.getElementById('ultima-fecha-confirmacion').textContent = jsDate.toLocaleDateString();

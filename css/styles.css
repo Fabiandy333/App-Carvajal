@@ -512,18 +512,34 @@ nav a:hover {
         display: grid;
         grid-template-columns: repeat(2,1fr);
         column-gap: 2rem;
+        height: 865px;
+        overflow: hidden; /* Oculta el desbordamiento */
+        align-content: space-between;
+        justify-items: end;
     }
+   
 }
+.mi_tabla_print {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    column-fill: auto; /* Distribuye el contenido entre columnas */
+    break-inside: avoid; /* Evita que las filas se dividan entre columnas */
+}
+
 .mi_tabla_print th, .mi_tabla_print td {
     text-align: left;
     padding: 8px;
+    word-wrap: break-word; /* Permite que el texto se ajuste dentro de las celdas */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
   }
   .mi_tabla_print th {
     background-color: #f2f2f2;
   }
 
   #print_img {
-    width: 100%;
+    width: 60%;
   }
 
   .subtitulo_print {
@@ -569,4 +585,16 @@ nav a:hover {
 .titulo-botones-opciones-img{
     height: 50px;
     width: 50px;
+}
+
+/* GRID INICIO PAGINAS FUSORES Y CONTROLES*/ 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    --justify-content: space-between;
+}
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
 }
