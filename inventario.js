@@ -167,26 +167,40 @@ const actualizarInventario = () => {
 
 //---------------------------- Busqueda -----------------------------------------------
 const filterTable = () => {
-    const filterValues = inputs.map(input => input.value.toLowerCase());
+    // 1. Normalizar valores de los inputs (eliminar tildes y convertir a minúsculas)
+    const filterValues = inputs.map(input => {
+        return input.value
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+    });
+
+    // 2. Obtener todas las filas (tr) del cuerpo de la tabla
     const rows = $tbody.querySelectorAll("tr");
 
+    // 3. Iterar sobre cada fila
     rows.forEach(row => {
         const cells = Array.from(row.querySelectorAll("td"));
         let match = true;
 
+        // 4. Comparar cada celda con el filtro correspondiente
         cells.forEach((cell, index) => {
-            if (filterValues[index] && !cell.textContent.toLowerCase().includes(filterValues[index])) {
-                match = false;
+            if (filterValues[index]) {
+                const cellText = cell.textContent
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase();
+
+                if (!cellText.includes(filterValues[index])) {
+                    match = false;
+                }
             }
         });
 
-        if (match) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
+        // 5. Mostrar u ocultar la fila según si coincide
+        row.style.display = match ? "" : "none";
     });
-}
+};
 
 // DOCument
 d.addEventListener("DOMContentLoaded", getAllBase);

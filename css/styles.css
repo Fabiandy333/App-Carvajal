@@ -14,9 +14,12 @@ html {
     font-size: 60.5%; 
     scroll-snap-type: y mandatory;
 }
-.nav-bg , .contenedor-campos, .table-wrapper, .tbody, .print_contenido{
+.nav-bg , .contenedor-campos, .table-wrapper, .tbody, .print_contenido, .grid-item{
     scroll-snap-align: center;
     scroll-snap-stop: always;
+}
+.img-turno{
+    text-align: center;
 }
 body{
     font-size: 16px; /* 1rem = 10 px*/
