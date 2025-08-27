@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.3",
+    "@modelcontextprotocol/server-puppeteer": "^2025.5.12",
+    "zod": "^3.25.76"
+  }
+}
