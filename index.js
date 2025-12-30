@@ -1,4 +1,4 @@
-const Ip = '172.22.240.85'; //IP OFICINA OFICIAL
+const Ip = '172.22.191.140'; //IP OFICINA OFICIAL
 //const Ip = '192.168.1.10'; //IP CASA
 
 // ------------------- PETICIONES AL SERVIDOR ----------------------------
